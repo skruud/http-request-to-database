@@ -16,23 +16,21 @@ x = requests.get(data_link)
 data = x.json()
 print(data[0]['sector'])
 
-#for x in data[0]['sector']:
-    #print(x)
 
-sector = "Offentlig"
-amount = data[0]['sector']['Offentlig']
-date = data[0]['date'][0:10]
-location = data[0]['location']
-
-print(sector, amount, date, location)
-
-table = "public.sector"
-columns = "sector, amount, date, location"
-values = "'%s', %s, '%s', '%s'" %(sector, amount, date, location)
 
 database = SQLDatabase()
 
-database.insert_data(table, columns, values)
+for date_and_location in data:
+    for sector in date_and_location['sector']:
+        amount = date_and_location['sector'][sector]
+        date = date_and_location['date'][0:10]
+        location = date_and_location['location']
+
+        table = "public.sector"
+        columns = "sector, amount, date, location"
+        values = "'%s', %s, '%s', '%s'" %(sector, amount, date, location)
+
+        database.insert_data(table, columns, values)
 
 database.disconnect()
 
