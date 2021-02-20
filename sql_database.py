@@ -38,7 +38,7 @@ class SQLDatabase:
         """ insert a new vendor into the vendors table """
         sql = """INSERT INTO %s(%s)
                 VALUES(%s);""" %(table, columns, values)
-        print(sql)
+        #print(sql)
         try:
             # execute the INSERT statement
             self.cur.execute(sql)
