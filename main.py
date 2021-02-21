@@ -10,7 +10,7 @@ x = requests.get(data_link)
 data = x.json()
 
 tables = ['sector', 'occupation', 
-          'form', 'industry', 'role']
+          'form', 'industry', 'role', 'duration']
 
 #Correct displaced items
 sector_categories = ['Franchise/Selvstendig næringsdrivende', 
