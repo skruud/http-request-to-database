@@ -43,8 +43,10 @@ class SQLDatabase:
             # execute the INSERT statement
             self.cur.execute(sql)
         except (Exception, psycopg2.DatabaseError) as error:
+            print(sql)
             print(error)
             self.cur.close()
             if self.conn is not None:
                 self.conn.close()
+            quit()
         
