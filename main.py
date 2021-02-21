@@ -10,13 +10,14 @@ x = requests.get(data_link)
 data = x.json()
 
 tables = ['sector', 'occupation', 
-          'form', 'industry', 'role', ]
+          'form', 'industry', 'role']
 
 #Correct displaced items
 sector_categories = ['Franchise/Selvstendig næringsdrivende', 
                      'Offentlig', 'Privat', 'Samvirke', 'Organisasjoner']
 form_categories = ['Heltid', 'Deltid']
-role_categories = ['Leder', 'Direktør', 'Fagleder',]
+role_categories = ['Leder', 'Direktør', 'Fagleder']
+due_categories = ['Siste frist', 'Under en uke', 'Under tre døgn']
 
 database = SQLDatabase()
 
@@ -34,10 +35,12 @@ for date_and_location in data:
                 public_table = "public.form" 
             if element in role_categories:
                 public_table = "public.role" 
-            columns = "category, amount, date, location"
-            values = "'%s', %s, '%s', '%s'" %(element, amount, date, location)
 
-            database.insert_data(public_table, columns, values)
+            if element not in due_categories:
+                columns = "category, amount, date, location"
+                values = "'%s', %s, '%s', '%s'" %(element, amount, date, location)
+
+                database.insert_data(public_table, columns, values)
 
 database.disconnect()
 
