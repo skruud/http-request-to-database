@@ -63,9 +63,9 @@ class SQLDatabase:
             print("The number of parts: ", cur.rowcount)
             row = self.cur.fetchone()
 
-        while row is not None:
-            print(row)
-            row = self.cur.fetchone()
+            while row is not None:
+                print(row)
+                row = self.cur.fetchone()
         
         except (Exception, psycopg2.DatabaseError) as error:
             print(sql)
