@@ -49,4 +49,28 @@ class SQLDatabase:
             if self.conn is not None:
                 self.conn.close()
             quit()
+    
+    def retrieve_data(self, select, table, where, order):
+        """ insert data into the table """
+        sql = """SELECT %s
+                 FROM PUBLIC.%s
+                 WHERE location = %s
+                 ORDER BY %s;""" %(select, table, where, order)
+        #print(sql)
+        try:
+            # execute the SELECT statement
+            self.cur.execute(sql)
+            print("The number of parts: ", cur.rowcount)
+        row = cur.fetchone()
+
+        while row is not None:
+            print(row)
+            row = cur.fetchone()
         
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(sql)
+            print(error)
+            self.cur.close()
+            if self.conn is not None:
+                self.conn.close()
+            
