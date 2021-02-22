@@ -61,11 +61,11 @@ class SQLDatabase:
             # execute the SELECT statement
             self.cur.execute(sql)
             print("The number of parts: ", cur.rowcount)
-        row = cur.fetchone()
+            row = self.cur.fetchone()
 
         while row is not None:
             print(row)
-            row = cur.fetchone()
+            row = self.cur.fetchone()
         
         except (Exception, psycopg2.DatabaseError) as error:
             print(sql)
