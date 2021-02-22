@@ -4,10 +4,15 @@ import requests
 import json
 from sql_database import SQLDatabase
 
-data_link = 'https://8syg62n83a.execute-api.eu-north-1.amazonaws.com/dev/vd'
+#data_link = 'https://8syg62n83a.execute-api.eu-north-1.amazonaws.com/dev/vd'
 
-x = requests.get(data_link)
-data = x.json()
+#x = requests.get(data_link)
+#data = x.json()
+
+with open('olddata.json', 'r', encoding='utf-8-sig') as myfile:
+    data=myfile.read()
+
+data = json.loads(data)
 
 tables = ['sector', 'occupation', 
           'form', 'industry', 'role', 'duration']
