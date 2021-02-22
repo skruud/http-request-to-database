@@ -35,7 +35,7 @@ class SQLDatabase:
                 self.conn.close()
 
     def insert_data(self, table, columns, values):
-        """ insert a new vendor into the vendors table """
+        """ insert data into the table """
         sql = """INSERT INTO %s(%s)
                 VALUES(%s);""" %(table, columns, values)
         #print(sql)
