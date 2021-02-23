@@ -34,7 +34,7 @@ for date_and_location in data:
             location = date_and_location['location']
 
             public_table = "public.%s" %(table)
-            if element in sector_categories and table == 'role':
+            if element in sector_categories and table == 'form':
                 public_table = "public.sector" 
             if element in form_categories and table == 'duration':
                 public_table = "public.form" 
