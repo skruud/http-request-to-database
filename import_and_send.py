@@ -34,11 +34,11 @@ for date_and_location in data:
             location = date_and_location['location']
 
             public_table = "public.%s" %(table)
-            if element in sector_categories:
+            if element in sector_categories and table == 'role':
                 public_table = "public.sector" 
-            if element in form_categories:
+            if element in form_categories and table == 'duration':
                 public_table = "public.form" 
-            if element in role_categories:
+            if element in role_categories and table == 'sector':
                 public_table = "public.role" 
 
             if element not in due_categories:
