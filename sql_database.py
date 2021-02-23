@@ -54,13 +54,13 @@ class SQLDatabase:
         """ insert data into the table """
         sql = """SELECT %s
                  FROM PUBLIC.%s
-                 WHERE location = %s
+                 WHERE location = '%s'
                  ORDER BY %s;""" %(select, table, where, order)
         #print(sql)
         try:
             # execute the SELECT statement
             self.cur.execute(sql)
-            print("The number of parts: ", cur.rowcount)
+            print("The number of parts: ", self.cur.rowcount)
             row = self.cur.fetchone()
 
             while row is not None:
