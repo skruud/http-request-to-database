@@ -54,7 +54,7 @@ class SQLDatabase:
         """ insert data into the table """
         sql = """SELECT %s
                  FROM PUBLIC.%s
-                 WHERE '%s'
+                 WHERE %s
                  ORDER BY %s;""" %(select, table, where, order)
         #print(sql)
         try:
