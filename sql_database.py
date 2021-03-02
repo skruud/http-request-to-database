@@ -74,3 +74,21 @@ class SQLDatabase:
             if self.conn is not None:
                 self.conn.close()
             
+    def retrieve_sql_data(self, sql):
+        """ insert data into the table """
+        
+        #print(sql)
+        try:
+            # execute the SELECT statement
+            self.cur.execute(sql)
+            print("The number of parts: ", self.cur.rowcount)
+            
+            return self.cur.fetchmany(self.cur.rowcount)
+        
+        except (Exception, psycopg2.DatabaseError) as error:
+            print(sql)
+            print(error)
+            self.cur.close()
+            if self.conn is not None:
+                self.conn.close()
+            

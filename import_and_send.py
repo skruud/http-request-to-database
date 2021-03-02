@@ -9,7 +9,7 @@ from sql_database import SQLDatabase
 #x = requests.get(data_link)
 #data = x.json()
 
-with open('olddata.json', 'r', encoding='utf-8-sig') as myfile:
+with open('olddata2.json', 'r', encoding='utf-8-sig') as myfile:
     data=myfile.read()
 
 data = json.loads(data)
